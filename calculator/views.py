@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def index(request):
-    return HttpResponse("Działa dupa 123")
+
+def calculate(request):
+    return HttpResponse("Hello World - calculate")
+
+
+def home(request):
+    return HttpResponse("Hello World!")
