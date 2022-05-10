@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
+from calculator.models import Pizza
 
 
 def calculate(request):
@@ -8,3 +9,8 @@ def calculate(request):
 
 def home(request):
     return HttpResponse("Hello World!")
+
+
+def all_pizzas(request):
+    pizzas = list(Pizza.objects.values())
+    return JsonResponse(pizzas, safe=False)
