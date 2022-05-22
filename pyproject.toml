@@ -8,6 +8,7 @@ authors = ["Pawel Wisniewski"]
 python = "^3.10"
 Django = "^4.0.4"
 djangorestframework = "^3.13.1"
+django-cors-headers = "^3.12.0"
 
 [tool.poetry.dev-dependencies]
 
