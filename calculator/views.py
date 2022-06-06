@@ -20,7 +20,7 @@ def all_pizzas(request):
     return JsonResponse(pizzas, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'DELETE'])
 def pizza_list(request):
     if request.method == 'GET':
         pizzas = Pizza.objects.all()
@@ -33,3 +33,6 @@ def pizza_list(request):
             pizza_serializer.save()
             return JsonResponse(pizza_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(pizza_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'DELETE':
+        count = Pizza.objects.all().delete()
+        return JsonResponse(f"pizzas deleted successfully: {count}", status=status.HTTP_204_NO_CONTENT, safe=False)
